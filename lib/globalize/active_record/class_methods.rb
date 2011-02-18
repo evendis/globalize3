@@ -66,7 +66,7 @@ module Globalize
       def method_missing(method, *args)
         if method.to_s =~ /^find_(first_|)by_(\w+)$/ && translated?($2.to_sym)
           result = with_translated_attribute($2, args.first)
-          $1 == 'first_' ? result.first : result.all
+          result.first
         else
           super
         end
